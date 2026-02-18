@@ -58,7 +58,7 @@ exports.getTirth = async (req, res) => {
 // @access  Private/Admin
 exports.createTirth = async (req, res) => {
   try {
-    // Add user to req.body so we know who created it
+    // Adding user to req.body so we know who created it
     req.body.createdBy = req.user.id;
 
     const tirth = await Tirth.create(req.body);

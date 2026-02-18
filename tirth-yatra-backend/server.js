@@ -2,13 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const connectDB = require('./src/config/db.js');
 const errorHandler = require('./src/middleware/errorMiddleware');
 
 
-// Initialize Database
 connectDB();
 
 const app = express();
@@ -18,8 +16,7 @@ const app = express();
 // Middleware
 app.use(helmet()); // Sets security headers
 app.use(cors());
-app.use(express.json()); // Allows parsing of JSON bodies
-app.use(xss()); // Prevents Cross-Site Scripting
+app.use(express.json()); 
 
 
 // Rate limiting: prevent brute force/spam
@@ -42,6 +39,10 @@ app.use('/api/tirths', require('./src/routes/tirthRoutes'));
 app.get('/', (req, res) => {
   res.send('Jain Tirth Yatra API is running...');
 }); */
+
+app.get('/', (req, res) => {
+  res.status(200).json({ success: true, message: 'Jain Tirth Yatra API is running...' });
+});
 
 
 

@@ -118,7 +118,7 @@ const importData = async () => {
 
     // 3. Clear existing and Insert new
     await Tirth.deleteMany();
-    await User.deleteMany({ role: 'user' }); // Optional: clear test users
+    await User.deleteMany({ role: 'user' }); 
     
     await Tirth.insertMany(dataWithAdmin);
 
